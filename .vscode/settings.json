@@ -1,0 +1,8 @@
+{
+  "css.lint.vendorPrefix": "ignore",
+  "css.lint.unknownProperties": "ignore",
+  "css.validate": true,
+  "files.associations": {
+    "*.css": "css"
+  }
+}

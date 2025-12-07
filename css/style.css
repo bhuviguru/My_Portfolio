@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
-    /* Colors */
+    /* Colors - Deep Blue/Black Corporate Tone */
     --primary: #6366f1;
     --primary-dark: #4f46e5;
     --secondary: #06b6d4;
     --accent: #f472b6;
-    --background: #0f172a;
+    --background: #0b1120;
+    /* Darker, richer background */
     --surface: rgba(30, 41, 59, 0.7);
     --surface-light: rgba(51, 65, 85, 0.5);
     --text-primary: #f8fafc;
@@ -16,11 +17,17 @@
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
     --gradient-text: linear-gradient(to right, #6366f1, #06b6d4);
-    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+    /* More subtle */
+
+    /* Effects */
+    --box-shadow-premium: 0 20px 40px -5px rgba(0, 0, 0, 0.3);
 
     /* Spacing */
     --container-padding: 2rem;
     --max-width: 1200px;
+    --section-spacing: 6rem;
+    /* Breathing room */
 
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -37,8 +44,11 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--background);
     color: var(--text-primary);
-    line-height: 1.6;
+    line-height: 1.7;
+    /* Better readability */
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    /* Crisp text */
 }
 
 h1,
@@ -49,7 +59,10 @@ h5,
 h6 {
     font-family: 'Space Grotesk', sans-serif;
     color: var(--text-primary);
-    line-height: 1.2;
+    line-height: 1.1;
+    /* Tighter headings */
+    letter-spacing: -0.02em;
+    /* Modern tight look */
 }
 
 a {
@@ -149,51 +162,57 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 2rem;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
     cursor: pointer;
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 15px 30px -5px rgba(99, 102, 241, 0.5);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
 
 .glass-card {
     background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    /* Subtle light source */
     border-radius: 20px;
-    padding: 2rem;
+    padding: 2.5rem;
     transition: var(--transition);
 }
 
 .glass-card:hover {
-    border-color: rgba(99, 102, 241, 0.5);
+    border-color: rgba(99, 102, 241, 0.3);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow-premium);
 }
 
 .gradient-text {
@@ -440,15 +459,10 @@ img {
     position: relative;
     padding: 5px;
     /* Border width */
-    animation: spin 20s linear infinite;
     box-shadow: 0 0 50px rgba(99, 102, 241, 0.3);
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
+
 
 .profile-inner {
     width: 100%;
@@ -458,32 +472,30 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 8rem;
-    color: var(--text-secondary);
     position: relative;
     overflow: hidden;
 }
 
-/* Revert spin for inner image so it looks stationary or use an image */
-.profile-inner i {
-    animation: spin-reverse 20s linear infinite;
-}
-
-@keyframes spin-reverse {
-    to {
-        transform: rotate(-360deg);
-    }
+.profile-img {
+    width: 100.5%;
+    height: 100.5%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
 }
 
 .floating-card {
     position: absolute;
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(15, 23, 42, 0.9);
+    /* Increased opacity for better legibility */
     backdrop-filter: blur(10px);
-    padding: 0.75rem 1.25rem;
-    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    /* Smaller padding */
+    border-radius: 50px;
+    /* More pill-shaped */
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     animation: float 6s ease-in-out infinite;
@@ -491,25 +503,32 @@ img {
 }
 
 .floating-card i {
-    font-size: 1.25rem;
+    font-size: 1rem;
+    /* Smaller icon */
     color: var(--secondary);
 }
 
+.floating-card span {
+    font-size: 0.85rem;
+    /* Smaller text */
+    font-weight: 500;
+}
+
 .card-1 {
-    top: 10%;
-    right: 10%;
+    top: 5%;
+    right: 0%;
     animation-delay: 0s;
 }
 
 .card-2 {
-    bottom: 20%;
-    left: 5%;
+    bottom: 15%;
+    left: -5%;
     animation-delay: 2s;
 }
 
 .card-3 {
-    top: 40%;
-    right: -5%;
+    top: 45%;
+    right: -10%;
     animation-delay: 4s;
 }
 
@@ -795,15 +814,37 @@ img {
     justify-content: center;
 }
 
-.project-logo-img {
+/* Replaced project-logo-img with premiums icon placeholders */
+.project-icon-placeholder {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
     transition: transform 0.5s ease;
-    padding: 20px;
 }
 
-.project-card:hover .project-logo-img {
+.project-icon-placeholder i {
+    font-size: 8rem !important;
+    background: linear-gradient(to bottom, #ffffff 30%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.3));
+    /* Soft glow */
+    transition: var(--transition);
+}
+
+.qr-style {
+    background: transparent;
+}
+
+.weather-style {
+    background: transparent;
+}
+
+.project-card:hover .project-icon-placeholder {
     transform: scale(1.1);
 }
 
@@ -813,12 +854,15 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(15, 23, 42, 0.85);
+    /* Slightly less opaque to show partial color */
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: var(--transition);
+    z-index: 10;
+    /* Ensure overlay is on top */
 }
 
 .project-card:hover .project-overlay {
@@ -915,7 +959,7 @@ img {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1.5rem;
 }
 
@@ -1241,6 +1285,59 @@ img {
     color: #0077b5;
 }
 
-.stat-item .stat-icon i.fa-chart-line {
-    color: #00f3ff;
+.skill-icon.css i {
+    color: #1572B6 !important;
+}
+
+.skill-icon.js i {
+    color: #F7DF1E !important;
+}
+
+.skill-icon.vscode i {
+    color: #007ACC !important;
+}
+
+.skill-icon.git i {
+    color: #F05032 !important;
+}
+
+.skill-icon.github i {
+    color: #ffffff !important;
+}
+
+.skill-icon.react i {
+    color: #61DAFB !important;
+}
+
+.skill-icon.flutter i {
+    color: #54C5F8 !important;
+}
+
+.skill-icon.numpy i {
+    color: #4DABCF !important;
+}
+
+.skill-icon.pandas i {
+    color: #130654 !important;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.skill-icon.sklearn i {
+    color: #F7931E !important;
+}
+
+/* Restored & Perfected Python/Java Gradients */
+.skill-icon.python i {
+    background: linear-gradient(135deg, #306998 0%, #306998 50%, #FFD43B 50%, #FFD43B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.skill-icon.java i {
+    background: linear-gradient(to bottom, #E76F00 50%, #5382a1 50%);
+    /* Adjusted keyframes for better Steam/Cup split */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <button id="logout-btn">Logout</button>
+        </header>
+
+        <section class="content-section">
+            <h2>Add New Project</h2>
+            <form id="project-form">
+                <input type="text" id="p-title" placeholder="Project Title" required>
+                <textarea id="p-desc" placeholder="Project Description" rows="3"
+                    style="width:100%; margin:10px 0; padding:10px; box-sizing:border-box;" required></textarea>
+                <input type="text" id="p-img" placeholder="Image URL" required>
+                <input type="text" id="p-link" placeholder="Project Link" required>
+                <button type="submit">Add Project</button>
+            </form>
+        </section>
+
+        <section class="content-section">
+            <h2>Manage Projects</h2>
+            <div id="projects-list">
+                <!-- Projects will be loaded here -->
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Messages</h2>
+            <div id="messages-list">
+                <!-- Messages will be loaded here -->
+            </div>
+        </section>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
